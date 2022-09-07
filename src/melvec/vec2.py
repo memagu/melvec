@@ -1,6 +1,6 @@
 import math
 
-from vec_base import Vector
+from .vec_base import Vector
 
 
 class Vec2(Vector):
