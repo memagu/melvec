@@ -75,7 +75,7 @@ class Vec3(Vector):
         return Vec3(func(self.x), func(self.y), func(self.z))
 
     def rotate(self, angle, vector) -> Vector:
-        pass
+        raise NotImplementedError
 
     def rotate_x(self, angle) -> Vector:
         return self.rotate(angle, Vec3(1, 0, 0))
