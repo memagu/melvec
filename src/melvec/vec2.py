@@ -1,6 +1,5 @@
 import math
 
-import src.melvec
 from .vec_base import Vector
 
 
