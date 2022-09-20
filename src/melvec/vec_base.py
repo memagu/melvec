@@ -1,10 +1,13 @@
 from abc import ABC, abstractmethod
-import math
 
 
 class Vector(ABC):
     def __str__(self):
         return self.__class__.__name__ + str(self.__dict__)
+
+    def __iter__(self) -> float:
+        for component in self.__dict__.values():
+            yield component
 
     @abstractmethod
     def __add__(self, other):
@@ -35,23 +38,19 @@ class Vector(ABC):
         pass
 
     @abstractmethod
-    def __bool__(self):
+    def __bool__(self) -> bool:
         pass
 
     @abstractmethod
-    def __abs__(self):
+    def __abs__(self) -> float:
         pass
 
     @abstractmethod
-    def __iter__(self):
+    def magnitude(self) -> float:
         pass
 
     @abstractmethod
-    def magnitude(self):
-        pass
-
-    @abstractmethod
-    def magnitude_squared(self):
+    def magnitude_squared(self) -> float:
         pass
 
     @abstractmethod
@@ -59,7 +58,7 @@ class Vector(ABC):
         pass
 
     @abstractmethod
-    def dot(self, other):
+    def dot(self, other) -> float:
         pass
 
     @abstractmethod
@@ -67,7 +66,7 @@ class Vector(ABC):
         pass
 
     @abstractmethod
-    def scale_to_magnitude(self, magnitude):
+    def set_magnitude(self, magnitude):
         pass
 
     @abstractmethod
@@ -75,11 +74,11 @@ class Vector(ABC):
         pass
 
     @abstractmethod
-    def distance_to(self, other):
+    def distance_to(self, other) -> float:
         pass
 
     @abstractmethod
-    def distance_to_squared(self, other):
+    def distance_to_squared(self, other) -> float:
         pass
 
     @abstractmethod
@@ -91,7 +90,7 @@ class Vector(ABC):
         pass
 
     @abstractmethod
-    def angle_to(self, other):
+    def angle_to(self, other) -> float:
         pass
 
 

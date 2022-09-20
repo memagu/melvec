@@ -1,5 +1,6 @@
 import math
 
+import src.melvec
 from .vec_base import Vector
 
 
@@ -9,39 +10,35 @@ class Vec2(Vector):
         self.y = y
 
     @staticmethod
-    def from_angle(angle=0, magnitude=0):
-        return Vec2(math.cos(angle) * magnitude, math.sin(angle) * magnitude)
+    def from_polar(angle: float = 0.0, magnitude: float = 0) -> Vector:
+        return Vec2(math.cos(angle), math.sin(angle)) * magnitude
 
-    def __add__(self, other):
+    def __add__(self, other) -> Vector:
         return Vec2(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other):
+    def __sub__(self, other) -> Vector:
         return Vec2(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, scalar):
+    def __mul__(self, scalar) -> Vector:
         return Vec2(self.x * scalar, self.y * scalar)
 
-    def __pow__(self, scalar, modulo=None):
+    def __pow__(self, scalar, modulo=None) -> Vector:
         return Vec2(self.x ** scalar, self.y ** scalar)
 
-    def __truediv__(self, scalar):
+    def __truediv__(self, scalar) -> Vector:
         return Vec2(self.x / scalar, self.y / scalar)
 
-    def __floordiv__(self, scalar):
+    def __floordiv__(self, scalar) -> Vector:
         return Vec2(self.x // scalar, self.y // scalar)
 
-    def __mod__(self, scalar):
+    def __mod__(self, scalar) -> Vector:
         return Vec2(self.x % scalar, self.y % scalar)
 
-    def __bool__(self):
+    def __bool__(self) -> bool:
         return (self.x or self.y) != 0
 
-    def __abs__(self):
+    def __abs__(self) -> float:
         return self.magnitude()
-
-    def __iter__(self):
-        for component in (self.x, self.y):
-            yield component
 
     def magnitude(self) -> float:
         return (self.x ** 2 + self.y ** 2) ** 0.5
@@ -58,11 +55,11 @@ class Vec2(Vector):
     def cross(self, other) -> float:
         return (self.x * other.y) - (self.y * other.x)
 
-    def scale_to_magnitude(self, magnitude) -> Vector:
+    def set_magnitude(self, magnitude) -> Vector:
         return self.normalize() * magnitude
 
     def reflect(self, normal_vector) -> Vector:
-        return self - normal_vector * (2 * self.dot(normal_vector))
+        return self - normal_vector * 2 * self.dot(normal_vector)
 
     def distance_to(self, other) -> float:
         return ((other.x - self.x) ** 2 + (other.y - self.y) ** 2) ** 0.5
