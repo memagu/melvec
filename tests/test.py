@@ -10,4 +10,7 @@ if __name__ == "__main__":
     for component in v2:
         print(component)
 
+    print(v2)
+    print(repr(v2))
+
     print(melvec.Vec2.from_polar())

@@ -2,8 +2,11 @@ from abc import ABC, abstractmethod
 
 
 class Vector(ABC):
-    def __str__(self):
+    def __repr__(self):
         return self.__class__.__name__ + str(self.__dict__)
+
+    def __str__(self):
+        return f"{self.__class__.__name__}({', '.join(map(str, self.__dict__.values()))})"
 
     def __iter__(self) -> float:
         for component in self.__dict__.values():
